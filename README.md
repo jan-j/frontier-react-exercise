@@ -7,7 +7,8 @@ At Frontier, we aim to help our customers find and hire more candidates by impro
 When we generate our application forms, the first step involves capturing the customer's original form and generating a detailed schematic to describe the form to our React form generator on the frontend. For this exercise we'd like you to build a simple form generator based on some provided data.
 
 ## About the exercise
-The JSON array in `./src/data/form_instructions.json` is an example of the instructions used by our React app to generate application forms on the fly for our customers. 
+
+The JSON array in `./src/data/form_instructions.json` is an example of the instructions used by our React app to generate application forms on the fly for our customers.
 
 For this short exercise, please use the basic React setup provided in this repo, along with the provided instruction JSON, to generate a functional application form UI. We want you to solve the problem in a way that makes sense to you, but we ask that you consider the following constraints:
 
@@ -28,3 +29,8 @@ When you send your solution back to us, please include your thoughts on the exer
 Good luck!
 
 – Frontier Engineering :)
+
+## Solution explanation
+
+- Had to remove duplicated Spanish option from both choice questions.
+- As far as a real world form goes, question about other languages should not be required, so no languages selected should be a valid option, but I've let it be how it was defined.

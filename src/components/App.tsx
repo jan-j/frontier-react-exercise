@@ -1,15 +1,13 @@
 import React from 'react';
 import formInstructions from '../data/form_instructions.json';
+import Form from './Form/Form';
 
 function App() {
-  // Check your console to see the full instructions!
-  console.log(formInstructions);
+  const formDefinition: FormDefinition = formInstructions as FormDefinition;
 
   return (
     <div>
-      <img src="https://frontier-public-assets.s3-us-west-2.amazonaws.com/frontier-corona-logo.svg" alt="Frontier Logo" />
-      <h1>👋 Hello from Team Frontier!</h1>
-      <p>Good luck with the exercise. If you have any questions please email Jason: jason@frontier.jobs</p>
+      <Form definition={formDefinition} />
     </div>
   );
 }
