@@ -1,31 +1,56 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styles from './FieldRow.module.css';
 import Input from '../fields/Input/Input';
 import Textarea from '../fields/Textarea/Textarea';
 import Select from '../fields/Select/Select';
+import NumberInput from '../fields/NumberInput/NumberInput';
+import Boolean from '../fields/Boolean/Boolean';
 
 type FieldRowProps = {
   definition: FieldDefinition;
+  value: any;
+  handleChange: (value: any) => void;
   error?: string | null;
 };
 
-function FieldRow({ definition, error = null }: FieldRowProps) {
-  const renderField = () => {
+function FieldRow({
+  definition,
+  value,
+  handleChange,
+  error = null,
+}: FieldRowProps) {
+  const renderField = (): ReactNode => {
     switch (definition.type) {
       case 'text':
       case 'email':
       case 'phone':
       case 'location':
       case 'url':
-        return <Input {...definition} />;
+        return (
+          <Input {...definition} value={value} handleChange={handleChange} />
+        );
+      case 'number':
+        return (
+          <NumberInput
+            {...definition}
+            value={value}
+            handleChange={handleChange}
+          />
+        );
       case 'textarea':
-        return <Textarea {...definition} />;
+        return (
+          <Textarea {...definition} value={value} handleChange={handleChange} />
+        );
+      case 'boolean':
+        return (
+          <Boolean {...definition} value={value} handleChange={handleChange} />
+        );
       case 'monochoice':
       case 'multichoice':
-        return <Select {...definition} />;
+        return (
+          <Select {...definition} value={value} handleChange={handleChange} />
+        );
     }
-
-    // throw new Error(`Invalid field type: "${definition.type}"`);
   };
 
   return (

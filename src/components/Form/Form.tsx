@@ -17,8 +17,48 @@ const themeToStyles = (definition: ThemeDefinition) => {
   );
 };
 
+const getAllFields = (definition: FormDefinition): FieldDefinition[] => {
+  return definition.sections.reduce((acc: FieldDefinition[], section) => {
+    acc.push(...section.content);
+    return acc;
+  }, []);
+};
+
+const getInitValues = (definition: FormDefinition): Record<string, any> => {
+  const fields = getAllFields(definition);
+
+  return fields.reduce((acc: Record<string, any>, field) => {
+    switch (field.type) {
+      case 'number':
+      case 'monochoice':
+      case 'boolean':
+        acc[field.id] = null;
+        break;
+      case 'multichoice':
+        acc[field.id] = [];
+        break;
+      default:
+        acc[field.id] = '';
+    }
+
+    return acc;
+  }, {});
+};
+
 function Form({ definition }: FormProps) {
+  const [values, setValues] = useState<Record<string, any>>(
+    getInitValues(definition)
+  );
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const handleChange = ({ key, value }: { key: string; value: any }) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [key]: value,
+    }));
+  };
+
+  console.log(JSON.stringify(values, null, 2));
 
   return (
     <form className={styles.form} style={themeToStyles(definition.theme)}>
@@ -28,6 +68,8 @@ function Form({ definition }: FormProps) {
             <FieldRow
               key={field.id}
               definition={field}
+              value={values[field.id]}
+              handleChange={handleChange}
               error={errors[field.id]}
             />
           ))}

@@ -94,7 +94,6 @@ type FieldTextareaDefinition = FieldDefinitionBase & {
 
 type FieldNumberDefinition = FieldDefinitionBase & {
   type: 'number';
-  metadata: FieldTextLikeMetadataDefinition;
 };
 
 type FieldBooleanDefinition = FieldDefinitionBase & {
