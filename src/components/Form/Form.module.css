@@ -1,6 +1,3 @@
 .form {
-}
-
-.field {
-  color: var(--primary-color);
+  background-color: var(--background-color);
 }

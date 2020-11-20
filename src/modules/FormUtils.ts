@@ -1,10 +1,3 @@
-import Input from '../components/fields/Input/Input';
-import NumberInput from '../components/fields/NumberInput/NumberInput';
-import Textarea from '../components/fields/Textarea/Textarea';
-import Boolean from '../components/fields/Boolean/Boolean';
-import Select from '../components/fields/Select/Select';
-import React from 'react';
-
 export const getAllFields = (definition: FormDefinition): FieldDefinition[] => {
   return definition.sections.reduce((acc: FieldDefinition[], section) => {
     acc.push(...section.content);

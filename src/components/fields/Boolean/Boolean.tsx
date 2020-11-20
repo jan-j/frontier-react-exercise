@@ -50,7 +50,7 @@ function Boolean({
         checked={value === false}
         onChange={onChange}
       />
-      <label className={styles.label} htmlFor="radio-two">
+      <label className={styles.label} htmlFor={`${id}-no`}>
         No
       </label>
     </div>
