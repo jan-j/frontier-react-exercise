@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './Textarea.module.css';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 type TextareaProps = FieldTextareaDefinition & {
   value: string;
   handleChange: ({ key, value }: { key: string; value: string }) => void;
-  error?: string | null;
+  hasError?: boolean;
 };
 
 function Textarea({
@@ -12,7 +15,7 @@ function Textarea({
   metadata,
   value,
   handleChange,
-  error = null,
+  hasError = false,
 }: TextareaProps) {
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
     handleChange({
@@ -22,7 +25,9 @@ function Textarea({
 
   return (
     <textarea
-      className={styles.textarea}
+      className={cx('textarea', {
+        hasError,
+      })}
       {...metadata}
       value={value}
       onChange={onChange}

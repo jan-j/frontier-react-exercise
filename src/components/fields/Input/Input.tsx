@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './Input.module.css';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 type InputProps = FieldTextLikeDefinition & {
   value: string;
   handleChange: ({ key, value }: { key: string; value: string }) => void;
-  error?: string | null;
+  hasError?: boolean;
 };
 
 function Input({
@@ -12,7 +15,7 @@ function Input({
   metadata,
   value,
   handleChange,
-  error = null,
+  hasError = false,
 }: InputProps) {
   const { format, maxlength, ...inputProps } = metadata;
 
@@ -23,7 +26,9 @@ function Input({
     });
   return (
     <input
-      className={styles.input}
+      className={cx('input', {
+        hasError,
+      })}
       type={format}
       value={value}
       onChange={onChange}

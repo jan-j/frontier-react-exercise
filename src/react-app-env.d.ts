@@ -124,3 +124,6 @@ type FieldMultiChoiceDefinition = FieldDefinitionBase & {
     }
   ];
 };
+
+type FormErrors = Record<string, string>;
+type FormValues = Record<string, string | number | boolean | null | string[]>;

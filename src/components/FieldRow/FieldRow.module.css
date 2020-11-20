@@ -1,6 +1,11 @@
 .fieldRow {
 }
 
+.required {
+  padding-left: 0.1rem;
+  color: red;
+}
+
 .field {
   color: var(--primary-color);
 }

@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './NumberInput.module.css';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 type NumberInputProps = FieldNumberDefinition & {
   value: null | number;
   handleChange: ({ key, value }: { key: string; value: null | number }) => void;
-  error?: string | null;
+  hasError?: boolean;
 };
 
 function NumberInput({
@@ -12,7 +15,7 @@ function NumberInput({
   metadata,
   value = null,
   handleChange,
-  error = null,
+  hasError = false,
 }: NumberInputProps) {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     handleChange({
@@ -24,7 +27,9 @@ function NumberInput({
 
   return (
     <input
-      className={styles.input}
+      className={cx('input', {
+        hasError,
+      })}
       type="number"
       {...metadata}
       value={value === null ? '' : value}

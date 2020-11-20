@@ -1,5 +1,8 @@
 import React from 'react';
 import styles from './Select.module.css';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 type SelectProps = (FieldMonoChoiceDefinition | FieldMultiChoiceDefinition) & {
   value: null | string | string[];
@@ -10,7 +13,7 @@ type SelectProps = (FieldMonoChoiceDefinition | FieldMultiChoiceDefinition) & {
     key: string;
     value: string | string[];
   }) => void;
-  error?: string | null;
+  hasError?: boolean;
 };
 
 function Select({
@@ -19,7 +22,7 @@ function Select({
   metadata,
   value = null,
   handleChange,
-  error = null,
+  hasError = false,
 }: SelectProps) {
   const { options, ...selectProps } = metadata;
 
@@ -34,7 +37,9 @@ function Select({
 
   return (
     <select
-      className={styles.select}
+      className={cx('select', {
+        hasError,
+      })}
       {...selectProps}
       multiple={type === 'multichoice'}
       value={value || ''}

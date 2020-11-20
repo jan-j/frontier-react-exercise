@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './Boolean.module.css';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 type BooleanProps = FieldBooleanDefinition & {
   value: null | boolean;
   handleChange: ({ key, value }: { key: string; value: boolean }) => void;
-  error?: string | null;
+  hasError?: boolean;
 };
 
 function Boolean({
@@ -12,21 +15,45 @@ function Boolean({
   metadata,
   value = null,
   handleChange,
-  error = null,
+  hasError = false,
 }: BooleanProps) {
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleChange({
       key: id,
-      value: event.target.checked,
+      value: event.target.value === 'yes',
     });
+  };
   return (
-    <input
-      type="checkbox"
-      className={styles.boolean}
-      {...metadata}
-      checked={value || false}
-      onChange={onChange}
-    />
+    <div
+      className={cx('boolean', {
+        hasError,
+      })}
+    >
+      <input
+        className={styles.input}
+        type="radio"
+        id={`${id}-yes`}
+        name={id}
+        value="yes"
+        checked={value === true}
+        onChange={onChange}
+      />
+      <label className={styles.label} htmlFor={`${id}-yes`}>
+        Yes
+      </label>
+      <input
+        className={styles.input}
+        type="radio"
+        id={`${id}-no`}
+        name={id}
+        value="no"
+        checked={value === false}
+        onChange={onChange}
+      />
+      <label className={styles.label} htmlFor="radio-two">
+        No
+      </label>
+    </div>
   );
 }
 

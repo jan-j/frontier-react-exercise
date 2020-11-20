@@ -1,8 +1,8 @@
 .select {
 }
 
-.select:invalid {
-  background: red;
+.hasError {
+  border-color: red;
 }
 
 .option {

@@ -1,6 +1,2 @@
 .textarea {
 }
-
-.textarea:invalid {
-  background: red;
-}
