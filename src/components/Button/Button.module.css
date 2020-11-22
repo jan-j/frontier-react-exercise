@@ -1,2 +1,21 @@
 .button {
+  background-color: var(--primary-color, black);
+  border: 2px solid var(--secondary-color, grey);
+  color: var(--secondary-color, grey);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.button:hover,
+.button:focus,
+.button:active {
+  background-color: var(--secondary-color, grey);
+  border: 2px solid var(--primary-color, black);
+  color: var(--primary-color, black);
+  cursor: pointer;
+  outline: none;
+}
+
+.button:focus {
 }

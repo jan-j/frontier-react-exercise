@@ -1,7 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
-  font-size: 100%;
+  font-size: 62.5%;
 }
 
 body {
+  font-size: 1.6rem;
   padding: 1rem;
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 50%;
+  }
 }

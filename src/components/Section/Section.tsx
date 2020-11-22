@@ -9,7 +9,7 @@ type SectionProps = {
 function Section({ definition, children }: SectionProps) {
   return (
     <fieldset id={definition.id} className={styles.section}>
-      <h3 className={styles.title}>{definition.title}</h3>
+      <h2 className={styles.title}>{definition.title}</h2>
       <div className={styles.fields}>{children}</div>
     </fieldset>
   );

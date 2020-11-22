@@ -1,2 +1,20 @@
 .textarea {
+  background-color: var(--primary-color, black);
+  border: 2px solid var(--secondary-color, grey);
+  color: var(--secondary-color, grey);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.textarea:focus {
+  outline-color: var(--primary-color, black);
+}
+
+.textarea::placeholder {
+  color: #bbb;
+}
+
+.hasError {
+  border-color: red;
 }

@@ -1,7 +1,14 @@
 .fieldRow {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.fieldRow:last-child {
+  margin-bottom: 0;
 }
 
 .question {
+  margin-bottom: 0.5rem;
 }
 
 .required {
@@ -9,9 +16,7 @@
   color: red;
 }
 
-.field {
-  color: var(--primary-color);
-}
-
 .error {
+  margin-top: 0.5rem;
+  color: red;
 }
